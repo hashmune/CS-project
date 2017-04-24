@@ -94,6 +94,7 @@ body {
   -moz-osx-font-smoothing: grayscale;      
 }
 body {
+  position: relative;
   width: 100%;
   min-height: auto;
   -webkit-background-size: cover;
@@ -101,7 +102,7 @@ body {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/header.jpg');
+  background-image: url('../img/background.jpg');
   text-align: center;
   color: white;
 }
