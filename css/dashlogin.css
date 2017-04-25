@@ -29,6 +29,7 @@
 #btn {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
+  font-weight: bolder;
   outline: 0;
   background: #FF9900;
   width: 100%;

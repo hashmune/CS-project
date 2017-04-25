@@ -18,11 +18,11 @@ if (!isset($_POST['username']) && !isset($_POST['password'])) {
 	$password = mysql_real_escape_string($password);
 	$enryptpassword=md5($password);
 	// SQL query to fetch information of registerd users and finds user match.
-	$login = mysql_query("SELECT * FROM exe_mgr WHERE uname='$username' AND upass='$enryptpassword'");
+	$login = mysql_query("SELECT * FROM exe_manager WHERE uname='$username' AND upass='$enryptpassword'");
 	$rows = mysql_num_rows($login);
 		if ($rows == 1) {
-			$uid= mysql_result(mysql_query("SELECT uid FROM exe_mgr WHERE uname='$username' AND upass='$enryptpassword'"),0);
-			$keyset = mysql_query("UPDATE exe_mgr SET ukey='$key' WHERE uid='$uid'");
+			$uid= mysql_result(mysql_query("SELECT uid FROM exe_manager WHERE uname='$username' AND upass='$enryptpassword'"),0);
+			$keyset = mysql_query("UPDATE exe_manager SET ukey='$key' WHERE uid='$uid'");
 				if($keyset){
 				// Initializing Session
 				$_SESSION['ukey']=$key;
