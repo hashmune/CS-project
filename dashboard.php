@@ -55,9 +55,9 @@ $username = mysql_result(mysql_query("SELECT uname FROM exe_manager WHERE uid='$
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
-        <li class="active"> <a href="dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Sales Insight</a> </li>
-        <li> <a href=""><i class="fa fa-fw fa-shopping-cart"></i> Sales Patterns</a> </li>
-        <li> <a href=""><i class="fa fa-fw fa-table"></i> Profile Management</a> </li>
+        <li class="active"> <a href="dashboard.php"><i class="fa fa-fw fa-desktop"></i> Dashboard </a> </li>
+        <li> <a href=""><i class="fa fa-fw fa-shopping-cart"></i> Patterns </a> </li>
+        <li> <a href=""><i class="fa fa-fw fa-tasks"></i> Patter Filter </a> </li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -68,7 +68,7 @@ $username = mysql_result(mysql_query("SELECT uname FROM exe_manager WHERE uid='$
       <!-- Page Heading -->
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="page-header"> Dashboard <small>(Statistics Overview)</small> </h1>
+          <h1 class="page-header"> Dashboard <small>(Patterns Overview)</small> </h1>
           
         </div>
       </div>
@@ -145,33 +145,55 @@ $username = mysql_result(mysql_query("SELECT uname FROM exe_manager WHERE uid='$
         </div>
       </div> -->
       <!-- /.row -->
-      <br>
       <div class="row">
         <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> This year Total Sales</h3>
+              <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Identified patterns </h3>
             </div>
             <div class="panel-body">
               <div id="morris-area-chart"></div>
             </div>
           </div>
         </div>
-      </div>      
+      </div> 
 
       <br>
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Last year Total Sales</h3>
+              <h3 class="panel-title"><i class="fa fa-th-large fa-fw"></i> Items in pattern 1 </h3>
             </div>
             <div class="panel-body">
-              <div id="morris-area-chart"></div>
+              <div id="donut-example"></div>
             </div>
           </div>
         </div>
-      </div>
+
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-th-large fa-fw"></i> Items in pattern 2 </h3>
+            </div>
+            <div class="panel-body">
+              <div id="donut-example1"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-th-large fa-fw"></i> Items in pattern 3 </h3>
+            </div>
+            <div class="panel-body">
+              <div id="donut-example2"></div>
+            </div>
+          </div>
+        </div>
+      </div>   
+
       <!-- /.row -->
       <!-- /.row --> 
       

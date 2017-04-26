@@ -6,6 +6,7 @@
   margin: auto;
 }
 .form {
+  height: 210px;
   position: relative;
   z-index: 1;
   background: #FFFFFF;

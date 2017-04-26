@@ -30,7 +30,7 @@ if (!isset($_POST['username']) && !isset($_POST['password'])) {
 				echo 'hamburger';  
 				}else{echo 'Initializing Session failed';}
 		} else{
-		echo 'Username & password not matched';
+		echo 'Please enter a correct username and password. ';
 		}
 mysql_close($connection); // Closing Connection
 }
