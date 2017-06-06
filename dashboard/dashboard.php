@@ -1,38 +1,9 @@
 <?php
-require_once('configuration.php');
-require_once('session.php');
-$username = mysql_result(mysql_query("SELECT uname FROM exe_manager WHERE uid='$uid'"),0);
+require_once('../core/configuration.php');
+require_once('../session.php');
+$name = mysql_result(mysql_query("SELECT name FROM exe_manager WHERE uid='$uid'"),0);
+require '../components/dash_header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Dashboard</title>
-
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="css/sb-admin.css" rel="stylesheet">
-
-<!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<script src="js/auto_log.js"></script>
-</head>
 
 <body>
 <div id="wrapper"> 
@@ -45,7 +16,7 @@ $username = mysql_result(mysql_query("SELECT uname FROM exe_manager WHERE uid='$
       <a class="navbar-brand">Dashboard Services</a> </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-      <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $username; ?><b class="caret"></b></a>
+      <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $name; ?><b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li class="divider"></li>
           <li> <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a> </li>
@@ -55,9 +26,10 @@ $username = mysql_result(mysql_query("SELECT uname FROM exe_manager WHERE uid='$
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
-        <li class="active"> <a href="dashboard.php"><i class="fa fa-fw fa-desktop"></i> Dashboard </a> </li>
-        <li> <a href=""><i class="fa fa-fw fa-shopping-cart"></i> Patterns </a> </li>
-        <li> <a href=""><i class="fa fa-fw fa-tasks"></i> Patter Filter </a> </li>
+        <li class="active"> <a href="dashboard.php"><i class="fa fa-fw fa-desktop"></i> Sales Insights </a> </li>
+        <li> <a href="pattern_filter.php"><i class="fa fa-fw fa-tasks"></i> Sales Patterns </a> </li>
+        <li> <a href=""><i class="fa fa-fw fa-shopping-cart"></i> Products</a> </li>
+        <li> <a href="profile.php"><i class="fa fa-fw fa-user-circle-o"></i> Profile </a> </li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -207,14 +179,14 @@ $username = mysql_result(mysql_query("SELECT uname FROM exe_manager WHERE uid='$
 <!-- /#wrapper --> 
 <?php mysql_close($connection); ?>
 <!-- jQuery --> 
-<script src="js/jquery.js"></script> 
+<script src="../public/js/jquery.js"></script> 
 
 <!-- Bootstrap Core JavaScript --> 
-<script src="js/bootstrap.min.js"></script> 
+<script src="../public/js/bootstrap.min.js"></script> 
 
 <!-- Morris Charts JavaScript --> 
-<script src="js/plugins/morris/raphael.min.js"></script> 
-<script src="js/plugins/morris/morris.min.js"></script> 
-<script src="js/plugins/morris/morris-data.js"></script>
+<script src="../public/js/plugins/morris/raphael.min.js"></script> 
+<script src="../public/js/plugins/morris/morris.min.js"></script> 
+<script src="../public/js/plugins/morris/morris-data.js"></script>
 </body>
 </html>

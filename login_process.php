@@ -5,7 +5,7 @@ if (!isset($_POST['username']) && !isset($_POST['password'])) {
 	}
 	else
 	{
-	require_once('configuration.php');
+	require_once('core/configuration.php');
 	$key = md5(microtime().rand()); 
 	// Define $username and $password
 	$username=$_POST['username'];

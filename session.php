@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['ukey']) && !isset($_SESSION['uid'])){
-header("location: index.html");
+header("location: dashboard_login.php");
 }
 $sessionkey = $_SESSION['ukey'];
 $uid = $_SESSION['uid'];
