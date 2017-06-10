@@ -43,19 +43,7 @@ require '../components/dash_header.php';
     <div class="container-fluid"> 
       
       <!-- Page Heading -->
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="container" style="margin-top: 15px;">
-          <div class="btn-group btn-group-justified">
-            <a href="#" class="btn btn-primary" onclick="daily()">Daily</a>
-            <a href="#" class="btn btn-primary" onclick="weekly()">Weekly</a>
-            <a href="#" class="btn btn-primary" onclick="monthly()">Monthly</a>
-          </div>
-          </div>
-        </div>
-      </div>
-
-      <hr>
+     
 
       <div class="row">
         <div class="col-lg-12">
@@ -67,7 +55,14 @@ require '../components/dash_header.php';
                 <h3>Start Date : </h3>
               </div>
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
-                <input id="startdate" />
+                <div class="form-group">
+                <div class='input-group date' >
+                    <input type='text' id='startdate' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
               </div>
             </div>
             <div class="row">
@@ -75,7 +70,14 @@ require '../components/dash_header.php';
                 <h3>End Date : </h3>
               </div>
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
-                <input type="text" id="enddate"/>
+                <div class="form-group">
+                <div class='input-group date'>
+                    <input type='text' id='enddate' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+               </div>
               </div>
             </div>
           </div>
@@ -85,7 +87,12 @@ require '../components/dash_header.php';
                 <h3>Start Time : </h3>
               </div>
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
-                <input type="text" id="starttime"/>
+                <div class="form-group">
+                <div class="input-group bootstrap-timepicker timepicker">
+                  <input id="starttime" type="text" class="form-control input-small">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+               </div>
+               </div>
               </div>
             </div>
             <div class="row">
@@ -93,7 +100,12 @@ require '../components/dash_header.php';
                 <h3>End Time : </h3>
               </div>
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
-                <input type="text" id="endtime"/>
+                <div class="form-group">
+                <div class="input-group bootstrap-timepicker timepicker">
+                  <input id="endtime" type="text" class="form-control input-small" >
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+               </div>
               </div>
             </div>
           </div>
@@ -182,18 +194,21 @@ require '../components/dash_header.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="../public/js/jquery.js"></script>
+<script type="text/javascript" src="../public/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../public/js/jquery-ui.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap-timepicker.js"></script>
+
 
 <script>
 
-function daily() {
-    document.getElementById("startdate").disabled = true;
-    document.getElementById("enddate").disabled = true;
-}
-
-function weekly(){
-    document.getElementById("startdate").disabled = false;
-    document.getElementById("enddate").disabled = false;
-}
+$( function() {
+    $( "#startdate" ).datepicker();
+    $( "#enddate" ).datepicker();
+    $('#starttime').timepicker(); 
+    $('#endtime').timepicker();
+  } );
 
 </script>
 

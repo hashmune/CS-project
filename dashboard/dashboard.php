@@ -44,78 +44,7 @@ require '../components/dash_header.php';
           
         </div>
       </div>
-      <!-- /.row -->
-      
-      <!-- <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="panel panel-green">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-3"> <i class="fa fa-comments fa-5x"></i> </div>
-                <div class="col-xs-9 text-right">
-                  <div class="huge">26</div>
-                  <div>No of sales today</div>
-                </div>
-              </div>
-            </div>
-            <a href="#">
-            <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-              <div class="clearfix"></div>
-            </div>
-            </a> </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="panel panel-red">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-3"> <i class="fa fa-tasks fa-5x"></i> </div>
-                <div class="col-xs-9 text-right">
-                  <div class="huge">12</div>
-                  <div>items for Reorder</div>
-                </div>
-              </div>
-            </div>
-            <a href="#">
-            <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-              <div class="clearfix"></div>
-            </div>
-            </a> </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="panel panel-green">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-3"> <i class="fa fa-shopping-cart fa-5x"></i> </div>
-                <div class="col-xs-9 text-right">
-                  <div class="huge">124</div>
-                  <div>No of sales today</div>
-                </div>
-              </div>
-            </div>
-            <a href="#">
-            <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-              <div class="clearfix"></div>
-            </div>
-            </a> </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="panel panel-red">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-3"> <i class="fa fa-support fa-5x"></i> </div>
-                <div class="col-xs-9 text-right">
-                  <div class="huge">13</div>
-                  <div>items for Reorder</div>
-                </div>
-              </div>
-            </div>
-            <a href="#">
-            <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-              <div class="clearfix"></div>
-            </div>
-            </a> </div>
-        </div>
-      </div> -->
+
       <!-- /.row -->
       <div class="row">
         <div class="col-lg-12">
@@ -124,7 +53,7 @@ require '../components/dash_header.php';
               <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Identified patterns </h3>
             </div>
             <div class="panel-body">
-              <div id="morris-area-chart"></div>
+              <div id="wordcloud"></div>
             </div>
           </div>
         </div>
@@ -184,9 +113,9 @@ require '../components/dash_header.php';
 <!-- Bootstrap Core JavaScript --> 
 <script src="../public/js/bootstrap.min.js"></script> 
 
-<!-- Morris Charts JavaScript --> 
-<script src="../public/js/plugins/morris/raphael.min.js"></script> 
-<script src="../public/js/plugins/morris/morris.min.js"></script> 
-<script src="../public/js/plugins/morris/morris-data.js"></script>
+<script src="../lib/d3/d3.js"></script>
+<script src="../public/js/d3.layout.cloud.js"></script>
+<script src="../public/js/wordcloud.js"></script>
+
 </body>
 </html>
