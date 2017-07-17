@@ -41,7 +41,7 @@ $(document).ready(function(){
 				$("#username").css('outline','1px solid red');
 				 }else{
 			
-			$("#loginfo").html("<center><img src='public/img/ajax-loader.gif' /></center>");
+			$("#loginfo").html("<center><img src='public/img/ajax-loader.gif'/></center>");
 									
 								  $.ajax({
 									  type:"post",

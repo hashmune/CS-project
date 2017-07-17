@@ -6,7 +6,7 @@ require 'components/nav.php';
 <header>
   <div class="header-content">
     <div class="header-content-inner">
-      <h1>Your data in style</h1>
+      <h1>Bigdata Analysis and Services</h1>
       <hr>
       <a href="dashboard_login.php" class="btn btn-primary btn-xl page-scroll">Dashboard Login</a> </div>
   </div>
