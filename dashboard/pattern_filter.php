@@ -43,8 +43,78 @@ require '../components/dash_header.php';
     <div class="container-fluid"> 
       
       <!-- Page Heading -->
-     
+      <?php 
+        $sdate_error=$edate_error=$stime_error=$etime_error='';
 
+        if (isset($_POST['generate'])) {
+          if (empty($_POST['startdate'])) {
+            $sdate_error='* Start date is required.';
+          }
+          if (empty($_POST['enddate'])) {
+            $edate_error='* End date is required.';
+          }
+          if (empty($_POST['starttime'])) {
+            $stime_error='* Start time is required.';
+          }
+          if (empty($_POST['endtime'])) {
+            $etime_error='* End time is required.';
+          }
+        }
+
+      ?>
+
+      <?php
+        if(isset($_POST['generate'])) {
+          if(!empty($_POST['startdate']) && !empty($_POST['enddate']) && !empty($_POST['starttime']) && !empty($_POST['endtime'])){
+            $startdate=$_POST['startdate'];
+            if ($startdate<=$_POST['enddate']) {
+              $enddate=$_POST['enddate'];
+            }else{
+              $edate_error='* Invalid input. Please enter the correct date.';
+            }
+            $starttime=$_POST['starttime'];
+            if ($startdate==$enddate && $starttime>=$_POST['endtime']) {
+               $etime_error='* Invalid input. Please enter the correct time.';
+            }else{
+               $endtime=$_POST['endtime'];
+            }
+            $agerange=$_POST['age'];
+            $district=$_POST['district'];
+
+            $filtering_data=array(
+
+                'startdate'=>$startdate ,
+                'enddate'=>$enddate,
+                'starttime'=>$starttime,
+                'endtime'=>$enddate,
+                'agerange'=>$agerange,
+                'district'=>$district
+
+            );
+
+          $filename='filterData.csv';
+
+          header("Content-type: text/csv");
+
+          header("Content-Disposition: attachment; filename=$filename");
+
+          $output=fopen("php://output", "w");
+
+          $header=array_keys($filtering_data[0]);
+
+          fputcsv($output, $header);
+
+          foreach ($filtering_data as $row) {
+            fputcsv($output, $row);
+          }
+
+          fclose($output);
+         }
+       }
+      ?>
+
+     
+      <form action="" method="post">
       <div class="row">
         <div class="col-lg-12">
         <h3>Select Period</h3>
@@ -57,11 +127,12 @@ require '../components/dash_header.php';
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
                 <div class="form-group">
                 <div class='input-group date' >
-                    <input type='text' id='startdate' class="form-control" />
+                    <input type='text' id='startdate' name="startdate" class="form-control" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
+                <p style="color: red;margin-top: 3px;"><?php echo $sdate_error; ?></p>
             </div>
               </div>
             </div>
@@ -72,11 +143,12 @@ require '../components/dash_header.php';
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
                 <div class="form-group">
                 <div class='input-group date'>
-                    <input type='text' id='enddate' class="form-control" />
+                    <input type='text' id='enddate' name="enddate" class="form-control" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
+                <p style="color: red;margin-top: 3px;"><?php echo $edate_error; ?></p>
                </div>
               </div>
             </div>
@@ -89,9 +161,10 @@ require '../components/dash_header.php';
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
                 <div class="form-group">
                 <div class="input-group bootstrap-timepicker timepicker">
-                  <input id="starttime" type="text" class="form-control input-small">
+                  <input id="starttime" type="text" name="starttime" class="form-control input-small">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                </div>
+               <p style="color: red;margin-top: 3px;"><?php echo $stime_error; ?></p>
                </div>
               </div>
             </div>
@@ -102,9 +175,10 @@ require '../components/dash_header.php';
               <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
                 <div class="form-group">
                 <div class="input-group bootstrap-timepicker timepicker">
-                  <input id="endtime" type="text" class="form-control input-small" >
+                  <input id="endtime" type="text" name="endtime" class="form-control input-small" >
                   <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
+                <p style="color: red;margin-top: 3px;"><?php echo $etime_error; ?></p>
                </div>
               </div>
             </div>
@@ -124,7 +198,7 @@ require '../components/dash_header.php';
             <h3>Age : </h3>
           </div>
           <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
-            <select class="selectpicker" data-live-search="true">
+            <select class="selectpicker" data-live-search="true" name="age">
               <option>--Select age range--</option>
               <option>Under 18</option>
               <option>18 - 25</option>
@@ -145,7 +219,7 @@ require '../components/dash_header.php';
             <h3>District : </h3>
           </div>
           <div class="col-lg-6" style="text-align: left; margin-top: 15px;">
-            <select class="selectpicker" data-live-search="true">
+            <select class="selectpicker" data-live-search="true" name="district">
               <option>--Select district--</option>
                <?php
 
@@ -172,25 +246,17 @@ require '../components/dash_header.php';
       <div class="row">
         <div class="col-lg-12">
           <div class="container">
-            <button type="button" class="btn btn-primary">Genarate</button>
+            <input type="submit" name="generate" value="Generate" class="btn btn-primary">
           </div>
         </div>
       </div>
+      </form>
 
-      </div>   
-
-      
-      <!-- /.row -->
-      <!-- /.row --> 
-      
-      
+      </div> 
     </div>
-    <!-- /.container-fluid --> 
-    
+
   </div>
-  <!-- /#page-wrapper --> 
-  
-<!-- /#wrapper --> 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
