@@ -27,11 +27,11 @@ if (!isset($_POST['username']) && !isset($_POST['password'])) {
 				// Initializing Session
 				$_SESSION['ukey']=$key;
 				$_SESSION['uid']=$uid;
-				echo 'hamburger';  
+				echo 'hamburger';
 				}else{echo 'Initializing Session failed';}
 		} else{
 		echo 'Please enter a correct username and password. ';
 		}
-mysql_close($connection); // Closing Connection
+mysql_close($connection); //Closing Connection
 }
 ?>
