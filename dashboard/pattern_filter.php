@@ -33,8 +33,8 @@ require '../components/dash_header.php';
       <ul class="nav navbar-nav side-nav">
         <li> <a href="dashboard.php"><i class="fa fa-fw fa-desktop"></i> Sales Insights </a> </li>
         <li class="active"> <a href=""><i class="fa fa-fw fa-tasks"></i> Sales Patterns </a> </li>
-        <li> <a href=""><i class="fa fa-fw fa-shopping-cart"></i> Products </a> </li>
-        <li> <a href="profile.php"><i class="fa fa-fw fa-user-circle-o"></i> Profile </a> </li>
+        <li> <a href="product.php"><i class="fa fa-fw fa-shopping-cart"></i> Products </a> </li>
+        <li> <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile </a> </li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -246,7 +246,7 @@ require '../components/dash_header.php';
       <div class="row">
         <div class="col-lg-12">
           <div class="container">
-            <input type="submit" name="generate" value="Generate" class="btn btn-primary">
+            <input type="submit" name="generate" value="Filter" class="btn btn-primary">
           </div>
         </div>
       </div>

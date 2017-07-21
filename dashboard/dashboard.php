@@ -28,8 +28,8 @@ require '../components/dash_header.php';
       <ul class="nav navbar-nav side-nav">
         <li class="active"> <a href="dashboard.php"><i class="fa fa-fw fa-desktop"></i> Sales Insights </a> </li>
         <li> <a href="pattern_filter.php"><i class="fa fa-fw fa-tasks"></i> Sales Patterns </a> </li>
-        <li> <a href=""><i class="fa fa-fw fa-shopping-cart"></i> Products</a> </li>
-        <li> <a href="profile.php"><i class="fa fa-fw fa-user-circle-o"></i> Profile </a> </li>
+        <li> <a href="product.php"><i class="fa fa-fw fa-shopping-cart"></i> Products</a> </li>
+        <li> <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile </a> </li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -40,7 +40,7 @@ require '../components/dash_header.php';
       <!-- Page Heading -->
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="page-header"> Dashboard <small>(Patterns Overview)</small> </h1>
+          <h3 class="page-header" style="padding-bottom: 15px"> Sales Insights </h3>
           
         </div>
       </div>
@@ -50,50 +50,28 @@ require '../components/dash_header.php';
         <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Identified patterns </h3>
+              <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Top sold items </h3>
             </div>
             <div class="panel-body">
               <div id="wordcloud"></div>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
+      <br> 
 
-      <br>
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-th-large fa-fw"></i> Items in pattern 1 </h3>
+              <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Sales </h3>
             </div>
             <div class="panel-body">
-              <div id="donut-example"></div>
+              <div id="wordcloud"></div>
             </div>
           </div>
         </div>
-
-        <div class="col-lg-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-th-large fa-fw"></i> Items in pattern 2 </h3>
-            </div>
-            <div class="panel-body">
-              <div id="donut-example1"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-th-large fa-fw"></i> Items in pattern 3 </h3>
-            </div>
-            <div class="panel-body">
-              <div id="donut-example2"></div>
-            </div>
-          </div>
-        </div>
-      </div>   
+      </div>
 
       <!-- /.row -->
       <!-- /.row --> 
