@@ -39,12 +39,26 @@ require '../components/dash_header.php';
     <!-- /.navbar-collapse --> 
   </nav>
   <div id="page-wrapper">
+    <div class="container-fluid">
+
+    <!-- /.navbar-collapse --> 
+  </nav>
+  <div id="page-wrapper">
     <div class="container-fluid"> 
+      
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="page-header" style="padding-bottom: 15px"> View product details</h3>
+          
+        </div>
+      </div>
+      <!-- Page Heading -->
       
       <hr>
       <!-- Page Heading -->
       <div class="row">
-        <div class="col-lg-6" style="text-align:right">
+        <div class="col-lg-6 panel panel-default">
           <img src="../public/img/user.png" class="img-thumbnail" alt="Cinque Terre" width="28%" height="28%">
         </div>
         <div class="col-lg-6" style="text-align: left; color: ">
