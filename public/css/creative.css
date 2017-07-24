@@ -399,3 +399,11 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
+
+.side-nav {
+  padding-left: 10px;
+}
+
+.navbar-header{
+  padding-left: 10px;
+}
