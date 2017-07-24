@@ -7,7 +7,7 @@ require '../components/dash_header.php';
 
 <body>
   <div id="wrapper"> 
-    
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,10 +16,11 @@ require '../components/dash_header.php';
         <a class="navbar-brand">Dashboard Services</a> </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $name; ?><b class="caret"></b></a>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-user"></i> <?php echo $name; ?><b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li class="divider"></li>
-              <li> <a href="../logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a> </li>
+              <!-- <li class="divider"></li> -->
+              <li> <a href="../logout.php"><i class="fa fa-fw fa-power-off"></i>Logout</a> </li>
             </ul>
           </li>
         </ul>
@@ -36,7 +37,7 @@ require '../components/dash_header.php';
       </nav>
       <div id="page-wrapper">
         <div class="container-fluid"> 
-          
+
           <!-- Page Heading -->
           <div class="row">
             <div class="col-lg-12">
