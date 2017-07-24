@@ -61,6 +61,111 @@ require '../components/dash_header.php';
         <div class="col-lg-12">
         <h3 style="text-align: center"> Account Settings </h3>
         </div>
+        <div class="container">
+          <table class="table table-striped">
+            <tr>
+              <td>
+
+              <?php
+              
+              $role_error=$branch_error=$email_error=$contact_error='';
+              if (isset($_POST['save1'])) {
+                if (empty($_POST['save1'])) {
+                  $role_error='Required field';
+                }
+              }
+              if (isset($_POST['save2'])) {
+                if (empty($_POST['save2'])) {
+                  $role_error='Required field';
+                }
+              }
+              if (isset($_POST['save3'])) {
+                if (empty($_POST['save3'])) {
+                  $role_error='Required field';
+                }
+              }
+              if (isset($_POST['save4'])) {
+                if (empty($_POST['save4'])) {
+                  $role_error='Required field';
+                }
+              }
+
+              function test_input($data){
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+              }
+
+              ?>
+
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+               <div class="col-sm-12 col-xs-12">
+                <div class="col-sm-3 col-xs-3" align="right"><h5><strong>Profession:</strong></h5></div>
+                <div class="col-sm-6 col-xs-6" > <input type="text" class="form-control" name="role"> </div>
+                <div class="col-sm-3 col-xs-3"><input type="submit" name="save1" value="save" class="btn btn-primary"></div>
+              </div>
+              <div class="col-sm-12 col-xs-12"> 
+                <?php 
+
+                if(isset($_POST['save1']) && !empty($_POST['role'])){
+                  $role= test_input($_POST['role']);
+                  $comment="Successfully updated.";
+                }
+
+                ?>
+
+                <?php
+                //error message reporting
+                if($role_error!=''){
+                ?>
+                <div class="col-sm-6 col-sm-offset-3" style="margin-top:5px;margin-right: 30px;">
+                  <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $role_error ;?></strong>
+                      </div>
+                    </div>
+                <?php
+                }else{
+                ?>
+                  <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $role_error ;?></span></div>
+                <?php
+                }
+                ?>
+              </div>
+              </form>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <div class="col-sm-3 col-xs-3" align="right"><h5><strong>Branch Name:</strong></h5></div>
+                <div class="col-sm-6 col-xs-6" > <input type="text" class="form-control" name="branch"> </div>
+                <div class="col-sm-3 col-xs-3"><input type="submit" name="save2" value="save" class="btn btn-primary">
+              </form>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <div class="col-sm-3 col-xs-3" align="right"><h5><strong>Email:</strong></h5></div>
+                <div class="col-sm-6 col-xs-6" > <input type="email" class="form-control" name="email"> </div>
+                <div class="col-sm-3 col-xs-3"><input type="submit" name="save3" value="save" class="btn btn-primary">
+              </form>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <div class="col-sm-3 col-xs-3" align="right"><h5><strong>Contact No:</strong></h5></div>
+                <div class="col-sm-6 col-xs-6" > <input type="text" class="form-control" name="contact"> </div>
+                <div class="col-sm-3 col-xs-3"><input type="submit" name="save4" value="save" class="btn btn-primary">
+              </form>
+              </td>
+            </tr>
+            
+          </table>
+        </div>
       </div> 
 
       <hr>

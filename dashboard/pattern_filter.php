@@ -39,25 +39,26 @@ require '../components/dash_header.php';
     </div>
     <!-- /.navbar-collapse --> 
   </nav>
-  <div id="page-wrapper">
-    <div class="container-fluid"> 
+  <div id="page-wrapper" >
+    <div class="container-fluid" style="margin-bottom: 20px;"> 
       
       <!-- Page Heading -->
       <?php 
         $sdate_error=$edate_error=$stime_error=$etime_error='';
+        $startdate=$enddate=$starttime=$endtime=$agerange=$district='';
 
         if (isset($_POST['generate'])) {
           if (empty($_POST['startdate'])) {
-            $sdate_error='* Start date is required.';
+            $sdate_error='Start date is required.';
           }
           if (empty($_POST['enddate'])) {
-            $edate_error='* End date is required.';
+            $edate_error='End date is required.';
           }
           if (empty($_POST['starttime'])) {
-            $stime_error='* Start time is required.';
+            $stime_error='Start time is required.';
           }
           if (empty($_POST['endtime'])) {
-            $etime_error='* End time is required.';
+            $etime_error='End time is required.';
           }
         }
 
@@ -70,50 +71,40 @@ require '../components/dash_header.php';
             if ($startdate<=$_POST['enddate']) {
               $enddate=$_POST['enddate'];
             }else{
-              $edate_error='* Invalid input. Please enter the correct date.';
+              $edate_error='Invalid input. Please enter the correct date.';
             }
             $starttime=$_POST['starttime'];
             if ($startdate==$enddate && $starttime>=$_POST['endtime']) {
-               $etime_error='* Invalid input. Please enter the correct time.';
+               $etime_error='Invalid input. Please enter the correct time.';
             }else{
                $endtime=$_POST['endtime'];
             }
+
             $agerange=$_POST['age'];
+
             $district=$_POST['district'];
 
-            $filtering_data=array(
+            $filename='filterData.csv';
 
-                'startdate'=>$startdate ,
-                'enddate'=>$enddate,
-                'starttime'=>$starttime,
-                'endtime'=>$enddate,
-                'agerange'=>$agerange,
-                'district'=>$district
+            $output=fopen($filename, "w");
 
-            );
+            $header=array('start date','end date','starttime','endtime','age range','district');
 
-          $filename='filterData.csv';
+            fputcsv($output, $header);
 
-          header("Content-type: text/csv");
+            $filtering_data=array(array($startdate ,$enddate,$starttime,$endtime,$agerange,$district));
 
-          header("Content-Disposition: attachment; filename=$filename");
+            foreach ($filtering_data as $row) {
+              fputcsv($output, $row);
+            }
 
-          $output=fopen("php://output", "w");
+            fclose($output); 
 
-          $header=array_keys($filtering_data[0]);
-
-          fputcsv($output, $header);
-
-          foreach ($filtering_data as $row) {
-            fputcsv($output, $row);
+            //header('Location: http://localhost/CS-project/dashboard/dashboard.php');
           }
-
-          fclose($output);
-         }
-       }
+        }
       ?>
 
-     
       <form action="" method="post">
       <div class="row">
         <div class="col-lg-12">
@@ -132,7 +123,24 @@ require '../components/dash_header.php';
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
-                <p style="color: red;margin-top: 3px;"><?php echo $sdate_error; ?></p>
+                <?php
+                //error message reporting
+                if($sdate_error!=''){
+                ?>
+                <div class="col-sm-12" style="margin-top:5px;">
+                  <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $sdate_error ;?></strong>
+                    </div>
+                </div>
+                <?php
+                }else{
+                ?>
+                  <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $sdate_error ;?></span></div>
+                <?php
+                }
+                ?>
+
             </div>
               </div>
             </div>
@@ -148,7 +156,25 @@ require '../components/dash_header.php';
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
-                <p style="color: red;margin-top: 3px;"><?php echo $edate_error; ?></p>
+                
+                 <?php
+                //error message reporting
+                if($edate_error!=''){
+                ?>
+                <div class="col-sm-12" style="margin-top:5px;">
+                  <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $edate_error ;?></strong>
+                    </div>
+                </div>
+                <?php
+                }else{
+                ?>
+                  <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $edate_error ;?></span></div>
+                <?php
+                }
+                ?>
+
                </div>
               </div>
             </div>
@@ -164,7 +190,25 @@ require '../components/dash_header.php';
                   <input id="starttime" type="text" name="starttime" class="form-control input-small">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                </div>
-               <p style="color: red;margin-top: 3px;"><?php echo $stime_error; ?></p>
+
+                <?php
+                //error message reporting
+                if($stime_error!=''){
+                ?>
+                <div class="col-sm-12" style="margin-top:5px;">
+                  <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $stime_error ;?></strong>
+                    </div>
+                </div>
+                <?php
+                }else{
+                ?>
+                  <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $stime_error ;?></span></div>
+                <?php
+                }
+                ?>
+
                </div>
               </div>
             </div>
@@ -178,7 +222,25 @@ require '../components/dash_header.php';
                   <input id="endtime" type="text" name="endtime" class="form-control input-small" >
                   <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
-                <p style="color: red;margin-top: 3px;"><?php echo $etime_error; ?></p>
+
+                <?php
+                //error message reporting
+                if($etime_error!=''){
+                ?>
+                <div class="col-sm-12" style="margin-top:5px;">
+                  <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $etime_error ;?></strong>
+                    </div>
+                </div>
+                <?php
+                }else{
+                ?>
+                  <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $etime_error ;?></span></div>
+                <?php
+                }
+                ?>
+
                </div>
               </div>
             </div>
@@ -250,7 +312,7 @@ require '../components/dash_header.php';
           </div>
         </div>
       </div>
-      </form>
+      </form> 
 
       </div> 
     </div>
