@@ -13,7 +13,7 @@ function idleLogout() {
 
     function resetTimer() {
         clearTimeout(t);
-        t = setTimeout(logout, 300000);  // time is in milliseconds
+        t = setTimeout(logout, 1800000);  // time is in milliseconds
     }
 }
 idleLogout();
