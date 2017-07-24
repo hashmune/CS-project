@@ -112,8 +112,113 @@ require '../components/dash_header.php';
          }
        }
       ?>
+      <br>
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Select Period </h3>
+            </div>
+            <div class="panel-body">
 
-     
+              <form action="" method="post">
+                <div class="col-lg-6">
+                  <div class="col-lg-6" style="text-align: right">
+                    <h3>Start Date : </h3>
+                  </div>
+                  <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
+                    <div class="form-group">
+                      <div class='input-group date' >
+                        <input type='text' id='startdate' name="startdate" class="form-control input-small"/>
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                      </div>
+                        <p style="color: red;margin-top: 3px;"><?php echo $sdate_error; ?></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="col-lg-6" style="text-align: right">
+                <h3>End Date : </h3>
+              </div>
+              <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
+                <div class="form-group">
+                <div class='input-group date'>
+                    <input type='text' id='enddate' name="enddate" class="form-control input-small"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <p style="color: red;margin-top: 3px;"><?php echo $edate_error; ?></p>
+               </div>
+              </div>
+            </div>
+                </div>
+
+              </form>
+            
+            </div>
+          </div> 
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Select Period </h3>
+            </div>
+            <div class="panel-body">
+
+              <form action="" method="post">
+                <div class="col-lg-6">
+                  <div class="col-lg-6" style="text-align: right">
+                    <h3>Start Time : </h3>
+                  </div>
+                    <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
+                      <div class="form-group">
+                        <div class="input-group bootstrap-timepicker timepicker">
+                          <input id="starttime" type="text" name="starttime" class="form-control input-small">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                      <p style="color: red;margin-top: 3px;"><?php echo $stime_error; ?></p>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="col-lg-6">
+                  <div class="col-lg-6" style="text-align: right">
+                <h3>End Time : </h3>
+              </div>
+              <div class="col-lg-6" style="text-align: left;margin-top: 15px;">
+                <div class="form-group">
+                <div class="input-group bootstrap-timepicker timepicker">
+                  <input id="endtime" type="text" name="endtime" class="form-control input-small" >
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+                <p style="color: red;margin-top: 3px;"><?php echo $etime_error; ?></p>
+               </div>
+              </div>
+            </div>
+                </div>
+
+              </form>
+            
+            </div>
+          </div> 
+        </div>
+    </div>
+
+
+
+
+
+   </div>
+</div>
+<!-- 
       <form action="" method="post">
       <div class="row">
         <div class="col-lg-12">
@@ -256,7 +361,7 @@ require '../components/dash_header.php';
     </div>
 
   </div>
-
+ -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
