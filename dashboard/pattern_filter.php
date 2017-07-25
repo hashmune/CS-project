@@ -67,13 +67,13 @@ require '../components/dash_header.php';
           if(isset($_POST['generate'])) {
             if(!empty($_POST['startdate']) && !empty($_POST['enddate']) && !empty($_POST['starttime']) && !empty($_POST['endtime'])){
               $startdate=$_POST['startdate'];
-              if ($startdate<=$_POST['enddate']) {
+              if ($startdate<=$_POST['enddate'] ) {
                 $enddate=$_POST['enddate'];
               }else{
                 $edate_error='Invalid date. Please enter the correct date.';
               }
               $starttime=$_POST['starttime'];
-              if ($startdate==$enddate && $starttime>=$_POST['endtime']) {
+              if ($startdate==$enddate && $starttime>=$_POST['endtime'] ) {
                 $etime_error='Invalid time. Please enter the correct time.';
               }else{
                 $endtime=$_POST['endtime'];
@@ -82,6 +82,18 @@ require '../components/dash_header.php';
               $agerange=$_POST['age'];
 
               $district=$_POST['district'];
+
+              if ($agerange=='--Select age range--') {
+                $agerange='ALL';
+              }else{
+                $agerange=$agerange;
+              }
+
+              if ($district=='--Select district--') {
+                $district='ALL';
+              }else{
+                $district=$district;
+              }
 
               $filename='filterData.csv';
 
@@ -146,7 +158,7 @@ require '../components/dash_header.php';
 
                         <div class="col-sm-5" style="margin-left: -15px;">
                           <div class="alert alert-danger">
-                            <a href="#" class="close" data-dismiss="alert" aria-lable="close"></a>
+                            <a href="#" class="close" data-dismiss="alert" aria-lable="close">&times;</a>
                             <strong><?php echo $sdate_error; ?></strong>
                           </div>
                         </div>
@@ -175,13 +187,13 @@ require '../components/dash_header.php';
 
                       <!-- input error message -->
                       <?php
-                      if($sdate_error!=''){
+                      if($edate_error!=''){
                         ?>
                         <!-- input error message -->
 
                         <div class="col-sm-5" style="margin-left: -15px;">
                           <div class="alert alert-danger">
-                            <a href="#" class="close" data-dismiss="alert" aria-lable="close"></a>
+                            <a href="#" class="close" data-dismiss="alert" aria-lable="close">&times;</a>
                             <strong><?php echo $edate_error; ?></strong>
                           </div>
                         </div>
@@ -231,7 +243,7 @@ require '../components/dash_header.php';
 
                         <div class="col-sm-5" style="margin-left: -15px;">
                           <div class="alert alert-danger">
-                            <a href="#" class="close" data-dismiss="alert" aria-lable="close"></a>
+                            <a href="#" class="close" data-dismiss="alert" aria-lable="close">&times;</a>
                             <strong><?php echo $stime_error; ?></strong>
                           </div>
                         </div>
@@ -266,7 +278,7 @@ require '../components/dash_header.php';
 
                         <div class="col-sm-5" style="margin-left: -15px;">
                           <div class="alert alert-danger">
-                            <a href="#" class="close" data-dismiss="alert" aria-lable="close"></a>
+                            <a href="#" class="close" data-dismiss="alert" aria-lable="close">&times;</a>
                             <strong><?php echo $etime_error; ?></strong>
                           </div>
                         </div>

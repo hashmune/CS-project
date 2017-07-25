@@ -68,7 +68,9 @@ require '../components/dash_header.php';
                   <h3 class="panel-title"><i class="fa fa-area-chart fa-fw"></i> Sales </h3>
                 </div>
                 <div class="panel-body">
-                  <div id="wordcloud"></div>
+                  <div>
+                    <svg width="960" height="500"></svg>
+                  </div>
                 </div>
               </div>
             </div>
@@ -95,6 +97,8 @@ require '../components/dash_header.php';
     <script src="../lib/d3/d3.js"></script>
     <script src="../public/js/d3.layout.cloud.js"></script>
     <script src="../public/js/wordcloud.js"></script>
+    <script src="../public/js/d3.multilines.js"></script>
+    <script src="//d3js.org/d3.v4.min.js"></script>
 
   </body>
   </html>
