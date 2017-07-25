@@ -36,13 +36,12 @@ require '../components/dash_header.php';
         <!-- /.navbar-collapse --> 
       </nav>
       <div id="page-wrapper">
-        <div class="container-fluid"> 
+        <div class="container-fluid">
 
           <!-- Page Heading -->
           <div class="row">
             <div class="col-lg-12">
-              <h3 class="page-header" style="padding-bottom: 15px"> Sales Insights </h3>
-              
+                <h3 class="page-header" style="padding-bottom: 15px"> Sales Insights </h3>
             </div>
           </div>
 
@@ -77,10 +76,16 @@ require '../components/dash_header.php';
           </div>
 
           <!-- /.row -->
-          <!-- /.row --> 
+          <!-- /.row -->
+
+          <div class="row">
+            <div class="col-lg-12">
+              <button class="btn btn-primary">Generate report</button>
+            </div>
+          </div>
           
         </div>
-        <!-- /.container-fluid --> 
+        <!-- /.container-fluid -->
         
       </div>
       <!-- /#page-wrapper --> 
