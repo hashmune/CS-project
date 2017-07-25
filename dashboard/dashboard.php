@@ -79,7 +79,7 @@ require '../components/dash_header.php';
           <!-- /.row -->
 
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="margin-top: 15px;">
               <button class="btn btn-primary">Generate report</button>
             </div>
           </div>
