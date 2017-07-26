@@ -6,6 +6,12 @@ $role = mysql_result(mysql_query("SELECT role FROM exe_manager WHERE uid='$uid'"
 $branch = mysql_result(mysql_query("SELECT branch FROM exe_manager WHERE uid='$uid'"),0);
 $tele = mysql_result(mysql_query("SELECT telephone FROM exe_manager WHERE uid='$uid'"),0);
 $email = mysql_result(mysql_query("SELECT email FROM exe_manager WHERE uid='$uid'"),0);
+
+function updatedata($column,$update_data,$id){
+    $res = mysql_query("UPDATE  exe_manager SET $column = '$update_data' WHERE uid=$id");
+    return $res;
+}
+
 require '../components/dash_header.php';
 ?>
 
@@ -80,26 +86,32 @@ require '../components/dash_header.php';
                       <td>
 
                         <?php
-
-                        $role_error=$branch_error=$email_error=$contact_error='';
+                        $comment1=$comment2=$comment3=$comment4='';
+                        $role_error='';
                         if (isset($_POST['save1'])) {
-                          if (empty($_POST['save1'])) {
+                          if (empty($_POST['role'])) {
                             $role_error='Required field';
                           }
                         }
+
+                        $branch_error='';
                         if (isset($_POST['save2'])) {
-                          if (empty($_POST['save2'])) {
-                            $role_error='Required field';
+                          if (empty($_POST['branch'])) {
+                            $branch_error='Required field';
                           }
                         }
+
+                        $email_error='';
                         if (isset($_POST['save3'])) {
-                          if (empty($_POST['save3'])) {
-                            $role_error='Required field';
+                          if (empty($_POST['email'])) {
+                            $email_error='Required field';
                           }
                         }
+
+                        $contact_error='';
                         if (isset($_POST['save4'])) {
-                          if (empty($_POST['save4'])) {
-                            $role_error='Required field';
+                          if (empty($_POST['contact'])) {
+                            $contact_error='Required field';
                           }
                         }
 
@@ -113,38 +125,51 @@ require '../components/dash_header.php';
                         ?>
 
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                          <div class="col-lg-6">
+                          <div class="col-sm-6 col-xs-6">
                             <h5><strong>Profession:</strong></h5>
-                            <input type="text" class="form-control" name="contact"/>
-                            <input type="submit" name="save4" value="save" class="btn btn-primary" style="margin-top: 10px" />
+                            <input type="text" class="form-control" name="role"/>
+                            <input type="submit" name="save1" value="save" class="btn btn-primary" style="margin-top: 10px" />
                           </div>
-                          <div class="col-sm-12 col-xs-12"> 
+                          <div class="col-sm-6 col-xs-6"> 
                             <?php 
 
                             if(isset($_POST['save1']) && !empty($_POST['role'])){
                               $role= test_input($_POST['role']);
-                              $comment="Successfully updated.";
+                              $column='role';
+                              $result=updatedata($column,$role,$uid);
+                              $comment1="Successfully updated.";
                             }
 
                             ?>
 
                             <?php
-                //error message reporting
+                            //error message reporting
                             if($role_error!=''){
                               ?>
-                              <div class="col-sm-6 col-sm-offset-3" style="margin-top:5px;margin-right: 30px;">
+                              <div class="col-sm-6  col-xs-6 " style="margin-top:25px;margin-right: 0px;">
                                 <div class="alert alert-danger">
                                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                  <strong><?php echo $role_error ;?></strong>
+                                  <center><strong><?php echo $role_error ;?></strong></center>
                                 </div>
                               </div>
                               <?php
-                            }else{
+                            }elseif($role_error=''){
                               ?>
                               <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $role_error ;?></span></div>
                               <?php
-                            }
+                            }elseif($comment1!=''){
                             ?>
+                              <div class="col-sm-6 " style="margin-top:25px;margin-right: 0px;">
+                              <div class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <center> <strong><?php echo $comment1 ;?></strong> </center>
+                              </div>
+                              </div>
+                            <?php
+                              }
+                  
+                            ?>
+
                           </div>
                         </form>
                       </td>
@@ -154,8 +179,48 @@ require '../components/dash_header.php';
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                           <div class="col-lg-6">
                             <h5><strong>Branch name:</strong></h5>
-                            <input type="text" class="form-control" name="contact"/>
-                            <input type="submit" name="save4" value="save" class="btn btn-primary" style="margin-top: 10px" />
+                            <input type="text" class="form-control" name="branch"/>
+                            <input type="submit" name="save2" value="save" class="btn btn-primary" style="margin-top: 10px" />
+                          </div>
+                          <div class="col-sm-6 col-xs-6"> 
+                            <?php 
+
+                            if(isset($_POST['save2']) && !empty($_POST['branch'])){
+                              $branch= test_input($_POST['branch']);
+                              $column='branch';
+                              $result=updatedata($column,$branch,$uid);
+                              $comment2="Successfully updated.";
+                            }
+
+                            ?>
+
+                            <?php
+                            //error message reporting
+                            if($branch_error!=''){
+                              ?>
+                              <div class="col-sm-6 " style="margin-top:25px;margin-right: 0px;">
+                                <div class="alert alert-danger">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <center><strong><?php echo $branch_error ;?></strong></center>
+                                </div>
+                              </div>
+                              <?php
+                            }elseif($branch_error=''){
+                              ?>
+                              <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $branch_error ;?></span></div>
+                              <?php
+                            }elseif($comment2!=''){
+                            ?>
+                              <div class="col-sm-6 " style="margin-top:25px;margin-right: 0px;">
+                              <div class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <center> <strong><?php echo $comment2 ;?></strong> </center>
+                              </div>
+                              </div>
+                            <?php
+                              }
+                            ?>
+
                           </div>
                         </form>
                       </td>
@@ -165,9 +230,52 @@ require '../components/dash_header.php';
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                           <div class="col-lg-6">
                             <h5><strong>Email:</strong></h5>
-                            <input type="text" class="form-control" name="contact"/>
-                            <input type="submit" name="save4" value="save" class="btn btn-primary" style="margin-top: 10px" />
+                            <input type="text" class="form-control" name="email"/>
+                            <input type="submit" name="save3" value="save" class="btn btn-primary" style="margin-top: 10px" />
                           </div>
+
+                          <div class="col-sm-6 col-xs-6"> 
+                            <?php 
+
+                            if(isset($_POST['save3']) && !empty($_POST['email'])){
+                              if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+                                $email_error='Invalid Email Format';
+                              }else{
+                                $email=test_input($_POST['email']);
+                                $column='email';
+                                $result=updatedata($column,$email,$uid);
+                                $comment3="Successfully updated.";
+                              }
+                            }
+
+                            ?>
+
+                            <?php
+                            //error message reporting
+                            if($email_error!=''){
+                              ?>
+                              <div class="col-sm-6 " style="margin-top:25px;margin-right: 0px;">
+                                <div class="alert alert-danger">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <center><strong><?php echo $email_error ;?></strong></center>
+                                </div>
+                              </div>
+                              <?php
+                            }elseif($email_error=''){
+                              ?>
+                              <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $role_error ;?></span></div>
+                              <?php
+                            }elseif($comment3!=''){
+                            ?>
+                              <div class="col-sm-6 " style="margin-top:25px;margin-right: 0px;">
+                              <div class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <center> <strong><?php echo $comment3 ;?></strong> </center>
+                              </div>
+                              </div>
+                            <?php
+                              }
+                            ?>
                         </form>
                       </td>
                     </tr>
@@ -179,6 +287,48 @@ require '../components/dash_header.php';
                             <input type="text" class="form-control" name="contact"/>
                             <input type="submit" name="save4" value="save" class="btn btn-primary" style="margin-top: 10px" />
                           </div>
+                            <div class="col-sm-6 col-xs-6"> 
+                            <?php 
+
+                            if(isset($_POST['save4']) && !empty($_POST['contact'])){
+                              if(!preg_match('^[0-9]{11}^', $_POST['contact'])){
+                                $contact_error='Invalid Format';
+                              }else{
+                                $contact=$_POST['contact'];
+                                $column='telephone';
+                                $result=updatedata($column,$contact,$uid);
+                                $comment4="Successfully updated.";
+                              }
+                            }
+
+                            ?>
+
+                            <?php
+                            //error message reporting
+                            if($contact_error!=''){
+                              ?>
+                              <div class="col-sm-6 " style="margin-top:25px;margin-right: 0px;">
+                                <div class="alert alert-danger">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <center><strong><?php echo $contact_error ;?></strong></center>
+                                </div>
+                              </div>
+                              <?php
+                            }elseif($contact_error=''){
+                              ?>
+                              <div class="col-sm-6 col-sm-offset-3"><span style="color: red; margin-left: 18px;"><?php echo $role_error ;?></span></div>
+                              <?php
+                            }elseif($comment4!=''){
+                            ?>
+                              <div class="col-sm-6 " style="margin-top:25px;margin-right: 0px;">
+                              <div class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <center> <strong><?php echo $comment4 ;?></strong> </center>
+                              </div>
+                              </div>
+                            <?php
+                              }
+                            ?>
                         </form>
                       </td>
                     </tr>
