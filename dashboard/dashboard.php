@@ -60,7 +60,7 @@ require '../components/dash_header.php';
           </div>
           <br> 
 
-          <div class="row">
+          <!--<div class="row">
             <div class="col-lg-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
@@ -68,19 +68,19 @@ require '../components/dash_header.php';
                 </div>
                 <div class="panel-body">
                   <div>
-                    <svg width="960" height="500"></svg>
+                    <svg id="chart"></svg>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
 
           <!-- /.row -->
           <!-- /.row -->
 
           <div class="row">
             <div class="col-lg-12" style="margin-top: 15px;">
-              <button class="btn btn-primary">Generate report</button>
+              <a href="download.php?download_file=some_file.pdf" class="btn btn-primary">Generate report</a>
             </div>
           </div>
           
@@ -98,12 +98,12 @@ require '../components/dash_header.php';
 
     <!-- Bootstrap Core JavaScript --> 
     <script src="../public/js/bootstrap.min.js"></script> 
-
+    
+    <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="../lib/d3/d3.js"></script>
     <script src="../public/js/d3.layout.cloud.js"></script>
     <script src="../public/js/wordcloud.js"></script>
-    <script src="../public/js/d3.multilines.js"></script>
-    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="../public/js/multilines.js"></script>
 
   </body>
   </html>

@@ -110,8 +110,10 @@ require '../components/dash_header.php';
               }
 
               fclose($output); 
+              if (isset($startdate) && isset($enddate) && isset($starttime) && isset($endtime)) {
+                header('Location: http://localhost/CS-project/dashboard/dashboard.php');
 
-            //header('Location: http://localhost/CS-project/dashboard/dashboard.php');
+              }
             }
           }
           ?>

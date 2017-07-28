@@ -2,12 +2,11 @@ var width= 750,
     height=400;
 
 var fill = d3.scale.category20();
+var data = [{word:"PASTASAUCE|PEANUTBUTTER",weight:20},{word:"CORNFLAKES|PEANUTBUTTER",weight:10},{word:"Normally",weight:25},{word:"CHILLIEPOWDER|APPLECIDER",weight:15},{word:"BASMATIRICE|CORNOIL|VEGETABLEOIL",weight:30},{word:"CHEESE|CHOCOLATE",weight:12},{word:"TOMATOSAUCE|FISHCHIPS",weight:8},{word:"ENERGYDRINK|CORNFLAKES",weight:18},{word:"CORNOIL|BISCUITS|CHOCOLATE",weight:22},{word:"PASTASAUCE|SOYABEANOIL",weight:27}];
 
   d3.layout.cloud().size([width, height])
-      .words([
-        "Hello", "world", "normally", "you", "want", "more", "words",
-        "than", "this"].map(function(d) {
-        return {text: d, size: 10 + Math.random() * 90};
+      .words(data.map(function(d) {
+        return {text: d.word, size: d.weight};
       }))
       .rotate(function() { return ~~(Math.random() * 2) * 90; })
       .font("Impact")
